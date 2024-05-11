@@ -72,7 +72,6 @@ grade_2 - second period grade (numeric: from 0 to 20)
 
 final_grade - final grade (numeric: from 0 to 20, output target)
 
-![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/29ca18eb-2217-4ded-a897-a1178eb0dbac)
 
 
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/6f66156b-291a-44cf-9d77-8b533532fdea)
