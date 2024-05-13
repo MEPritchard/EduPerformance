@@ -1,7 +1,9 @@
-# A high School has just finished a survery of it's students hoping to learn about what potential enviornemtnal factors could be contributing to the success or struggles of their students. The over all goal is to identify actionable items that increase the success of all students.**
+# A high school has just finished a survey of its students.
+# They are hoping to learn about what potential environmental factors could be contributing to the success or struggles of their students.
+# The overall goal is to identify actionable items that increase the success of all students.
 
 
-# Import Data From Github orginally from Kaggle
+# Import Data From Github orginally from Kaggle.
 https://www.kaggle.com/datasets/dillonmyrick/high-school-student-performance-and-demographics
 
 school - student's school (binary: "GP" - Gabriel Pereira or "MS" - Mousinho da Silveira)
@@ -73,52 +75,68 @@ grade_2 - second period grade (numeric: from 0 to 20)
 final_grade - final grade (numeric: from 0 to 20, output target)
 
 
-
+# Initial Findings: 
+When comparing all available metrics to grades, there was a weak negative correlation (-.35 to -.36) between class_failures and grade_math(s) seen in dark blue on figure 2.
+Meaning a higher class_failure is likely to result in lower math 1, 2 and final scores. 
+A very weak negative correlation (-.2 to -.25) exists between absences_portuguese and grades_portuguese. 
+There is a weak positive correlation (.21 and .19) seen in red in figure 2 was found between school_support and grade_1 of both math and Portuguese.
+# Fig 1 General Correleation Heatmap
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/6f66156b-291a-44cf-9d77-8b533532fdea)
 
+# Fig 2 General Grade Specific Correlation Heatmap
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/e01ec1f4-5907-40b1-bb94-d81821086c72)
-# Initial Findings: The only significant correlation in this data set, when comparing all available metrics to grades, was a negative correlation between 'class_failures' and grade_math's. Meaningin a higher class_failure is likely to result in lower math 1, 2 and final scores. A small negative correlation exists between absences_portuguese and grades_portuguese. The largest positive correlation was found bewtwen 'school_support' and grade_1 of both math and Portuguese.
 
-#  This data suggests reducing 'class_failures' will postively incrase math grades 1 2 and final.
-
+# Fig 3 General Grade Specific Distribution Plot
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/b5ac42c4-4dd8-4d63-8799-a128c89a4aa1)
-# The goal of the school is to increase the overall math and Portugese grades across the school. Little was gained from the general analysis. 
-# Trying to bring the bottom up is a quick way to timprove the statistical standing of a group.
-# My plan is to create a sample DataFrame, grabbing the lowest 25% scored in grade_1_2_final_math and a DataFrame of the 25% lowest scores of grade_1_2_final_portuguese. 
+
+
+# The goal is to increase the overall math and Portugese grades across the school.
+Little was gleaned from the general analysis. Trying to bring the bottom up is a quick way to improve the statistical standing of a group. Figure 3 shows the disproprotioned lower tail. 
+My plan is to create a sub-sample, grabbing the lowest 25% scored in grade 1 2 final math and the 25% lowest scores of grade 1 2 final Portuguese. With this sub-group identified specific actions can be taken to improve the distibution shape of the entire schools grades.
+# Fig 4 Low Fruit Math Grade Heatmap
+![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/5c94f3cc-98ca-4027-9602-0575f2218db1)
+
+# Fig 5 Low Fruit Portuguese Grade Heatmap
 
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/2158ac81-c7b3-4710-ab5e-a14fd746fd6e)
-
-
-![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/5c94f3cc-98ca-4027-9602-0575f2218db1)
-# There is extremely high correlation between one score to the next. We can say grades are consitent across the timeframe, with grade_2 being the best predicting factor of grade final.
-# Next steps will be to re-examine the 'low hanging fruit' data set for trends in both math and Portuguese.
-
+# There is extremely high correlation between one grade score to the next of the same type.
+Grades score are stringly correlated (.6 to .81 and .69 to .84) across the timeframe, with grade_2 being the best predicting factor of grade final of both math and Portuguese seen in Figure 4 and Figure 5. This indicates the teachers and school provided a consitent learning environemnt accross the year.
+Next steps will be to merge these datafames and re-examine the 'low hanging fruit' data set for trends in both math and Portuguese.
+# Fig 6 Low Fruit Correleation Heatmap
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/fe9e70a7-cd0c-409c-8164-0ff4af1bb85a)
-
-
+There are some subtle differences between Fig 1 and Fig 6
+# Fig 7 Low Fruit Grade Specific Correlation Heatmap
 ![image](https://github.com/MEPritchard/EduPerformance/assets/128252526/e583b049-a2dd-4885-9efd-c4435a67e5f1)
 
 
 # Actionable Items Math: 
-  Do:Extra paid classes. Within this sample group, students in the extra_paid_classes catagory are statisticallt advantaged in math scores. 
+  Do:Extra paid classes. Within the sub-group, students in the extra_paid_classes catagory have a small statistical advantaged in math scores. 
   
-  Do Not: Have class_failures
+  Do Not: Have class_failures. What can faculty and parents do to reduce class failures?
   
 # Actionable Items Portuguese:
-  Do: Score well on the first test. 
+  Do: Score well early. Scoring high on grade 1 has a high correlation to scoring similarly on grade final.
   
-  Do Not: miss class. 
+  Do Not: Miss class. Absences in a language class has small but significantly larger impact on grade scores when compared to math.
 
-Things to explore Math: school choice reason. This is a categorical column to be further explored by data and by faculty.
-Things to explore Portu: What effects sex (m/f) is having on students' academic success. Is there a bias?
-Things to explore: It appears that 75 absences may be an outlier but several other students also increase the std deviation of this metric. Meet with the team to understand what circumstances create this data.
-(What extra classes are being taken by these students. extra classes did not have such a powerful effect on the overall population)
-(school support had roughly .2 correlation to grade_1 in both Math and Portuguese broadly but non existent in this sample)
- (What can faculty and parents do to reduce class failures)
- (can faculty and parents explore a way to mitigate the damage of missing a language class?)
+# Next meeting topics: 
+What can parents, students and faculty do to reduce class failures?
+What can parents, students and faculty do to mitigate lost learning from Portuguese absences?
 
-#What is going on with the top 25%? Curiously there is an inverse relationship within the created sample between grade_1 .._2 .._final_math and grade_1 ..2.._final_protuguese which is contrary to the entire group.
-# Is there a combination of parameters that would be most likely to put someone in the bottom 25 of each grade?
+# Potential issues:
+A deeper dive should be conducted between sex and Portuguese grades. Sex has an equvilant negative correleation as absences to Portuguese grade scores. There could be a bias.
+In an effort to improve math score school choice reason could be examined. This is a categorical column had a small emergence in the lowest scoring students. More environmental factors could be scrutinized.
+
+# Comparative Study:
+What is going on with the top 25%? Curiously there is an inverse relationship within the created sample between grade_1 .._2 .._final_math and grade_1 ..2.._final_protuguese which is contrary to the entire group.
+Is there a combination of parameters that would be most likely to put someone in the bottom 25 of each grade?
+
+# Things to explore: 
+It appears that 75 absences may be an outlier but several other students also increase the std deviation of this metric. Meet with the team to understand what circumstances create this data.
+What extra classes are being taken by the students in the low scoring catagory. Extra classes did not have such a powerful effect on the overall population.
+School support had roughly .2 correlation to grade_1 in both Math and Portuguese broadly but non existent in this sub-sample.
+
+
 
 
 
